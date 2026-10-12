@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <title>Meridian — Academic Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" aria-label="Meridian home">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-copy"><strong>meridian<span>.</span></strong><small>ACADEMIC SYSTEMS</small></span>
+      </a>
+      <div class="workspace-label">WORKSPACE <span class="live-dot"></span></div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span><span>Overview</span><kbd>01</kbd></button>
+        <button class="nav-item" data-view="students"><span class="nav-icon">▤</span><span>Student registry</span><kbd>02</kbd></button>
+        <button class="nav-item" data-view="results"><span class="nav-icon">⌁</span><span>Results lab</span><kbd>03</kbd></button>
+        <button class="nav-item" data-view="analytics"><span class="nav-icon">▥</span><span>Performance</span><kbd>04</kbd></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="term-card"><span class="term-orb"></span><div><small>ACTIVE TERM</small><strong>Semester II · 2026</strong><p>Registry synchronised</p></div><span class="term-arrow">↗</span></div>
+        <div class="sidebar-profile"><div class="profile-avatar">AD</div><div class="profile-meta"><strong>Academic Desk</strong><span>Administrator</span></div><button id="settingsButton" class="icon-button tiny" title="About this demo">···</button></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button id="mobileMenu" class="icon-button mobile-menu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumbs"><span>Meridian</span><span class="crumb-slash">/</span><strong id="breadcrumbCurrent">Overview</strong></div>
+        <div class="topbar-actions">
+          <label class="global-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Find a student…" aria-label="Search students"><kbd>⌘ K</kbd></label>
+          <div class="term-pill"><span class="pulse"></span> 2026 / SEM II</div>
+          <button id="helpButton" class="icon-button help-button" aria-label="Help">?</button>
+          <div class="top-avatar" title="Academic Desk">AD</div>
+        </div>
+      </header>
+
+      <div class="page-content" id="pageContent" tabindex="-1">
+        <section class="view active" id="view-overview" aria-labelledby="overviewTitle">
+          <div class="page-heading">
+            <div><div class="eyebrow"><span class="eyebrow-line"></span> MONDAY, 12 OCTOBER 2026</div><h1 id="overviewTitle">The academic <em>pulse.</em></h1><p class="heading-subtitle">A clearer view of your student community, one record at a time.</p></div>
+            <button class="button button-primary" data-action="add-student"><span class="button-plus">＋</span> Register student</button>
+          </div>
+
+          <div class="hero-panel">
+            <div class="hero-grid-art" aria-hidden="true"><span class="art-ring ring-one"></span><span class="art-ring ring-two"></span><span class="art-ring ring-three"></span><span class="art-cross cross-one">✳</span><span class="art-cross cross-two">✳</span></div>
+            <div class="hero-copy"><div class="hero-kicker"><span class="hero-kicker-dot"></span> REGISTRY SNAPSHOT <span class="mono">/ 26.02</span></div><h2>Good systems make<br>room for <i>good work.</i></h2><p>Every student, every result, all in one connected academic workspace.</p><div class="hero-foot"><span class="hero-foot-label">YOUR REGISTRY</span><span class="hero-foot-rule"></span><strong id="heroStudentCount">08 STUDENTS</strong></div></div>
+            <div class="hero-score"><div class="score-ring" id="scoreRing"><div><strong id="heroAverage">78<span>%</span></strong><small>CLASS AVERAGE</small></div></div><div class="score-note"><span class="score-note-mark">↗</span><span><strong>Academic index</strong><small>Calculated from saved marks</small></span></div></div>
+          </div>
+
+          <div class="metric-strip" id="overviewMetrics" aria-label="Academic summary"></div>
+
+          <div class="section-title-row"><div><div class="eyebrow">THE PEOPLE BEHIND THE NUMBERS</div><h2>Recently in focus</h2></div><button class="text-button" data-view-link="students">Open registry <span>↗</span></button></div>
+          <div class="overview-lower">
+            <section class="panel roster-panel"><div class="panel-heading"><div><h3>Student register</h3><p>Latest records from your registry</p></div><span class="panel-index">A / 01</span></div><div id="recentStudents" class="recent-list"></div><div class="panel-bottom-link"><button class="text-button" data-view-link="students">View all student records <span>→</span></button></div></section>
+            <section class="panel insight-panel"><div class="panel-heading"><div><h3>Class signal</h3><p>How the cohort is tracking</p></div><span class="status-chip"><span></span> LIVE CALCULATION</span></div><div class="signal-content"><div class="signal-graphic"><div class="signal-halo"></div><div class="signal-value"><strong id="passRate">82</strong><span>%</span><small>PASS RATE</small></div></div><div class="signal-legend"><div><span class="legend-dot dot-pass"></span><div><strong id="passCount">7 students</strong><small>Meeting the benchmark</small></div></div><div><span class="legend-dot dot-review"></span><div><strong id="reviewCount">1 student</strong><small>Needs a closer look</small></div></div></div></div><div class="insight-footer"><span>Benchmark</span><strong>40% per subject</strong><span class="footer-divider"></span><button class="icon-button tiny" data-view-link="analytics" aria-label="Open performance">↗</button></div></section>
+          </div>
+          <div class="page-foot"><span>MERIDIAN REGISTRY <b>•</b> ACADEMIC YEAR 2026</span><span>MADE FOR CLARITY <span class="foot-star">✳</span></span></div>
+        </section>
+
+        <section class="view" id="view-students" aria-labelledby="studentsTitle">
+          <div class="page-heading registry-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> RECORDS / DIRECTORY</div><h1 id="studentsTitle">Student <em>registry.</em></h1><p class="heading-subtitle">A living index of the people in your academic community.</p></div><button class="button button-primary" data-action="add-student"><span class="button-plus">＋</span> New student</button></div>
+          <div class="registry-toolbar"><div class="registry-count"><strong id="registryCount">08</strong><span>records in the directory</span></div><div class="registry-controls"><label class="filter-search"><span>⌕</span><input id="studentSearch" type="search" placeholder="Name, ID, course…" aria-label="Search registry"></label><select id="courseFilter" aria-label="Filter by course"><option value="all">All programmes</option></select><select id="semesterFilter" aria-label="Filter by semester"><option value="all">All semesters</option><option value="1">Semester I</option><option value="2">Semester II</option><option value="3">Semester III</option><option value="4">Semester IV</option><option value="5">Semester V</option><option value="6">Semester VI</option></select><button class="button button-outline" id="exportCsv">↧ Export CSV</button></div></div>
+          <div class="registry-layout"><section class="panel table-panel"><div class="table-scroll"><table class="student-table"><thead><tr><th class="select-col">#</th><th>STUDENT</th><th>PROGRAMME</th><th>SEMESTER</th><th>ACADEMIC INDEX</th><th>STATUS</th><th></th></tr></thead><tbody id="studentTableBody"></tbody></table></div><div class="table-footer"><span id="tableShowing">Showing 8 records</span><span>SELECT A RECORD TO INSPECT <b>↗</b></span></div></section><aside class="student-detail panel" id="studentDetail"><div class="detail-empty"><div class="empty-symbol">↖</div><span class="eyebrow">RECORD INSPECTOR</span><h3>Choose a student.</h3><p>Select any record in the directory to inspect their academic profile and manage their results.</p></div></aside></div>
+          <div class="page-foot"><span>MERIDIAN REGISTRY <b>•</b> RECORDS ARE STORED LOCALLY</span><span>DIRECTORY <span class="foot-star">✳</span></span></div>
+        </section>
+
+        <section class="view" id="view-results" aria-labelledby="resultsTitle">
+          <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> ACADEMIC RECORDS / MARKS</div><h1 id="resultsTitle">Results <em>lab.</em></h1><p class="heading-subtitle">Enter marks. Let the grade logic handle the arithmetic.</p></div><div class="heading-tag"><span class="pulse"></span> RULE SET / 40% PASS MARK</div></div>
+          <div class="results-intro"><div class="results-intro-copy"><span class="eyebrow">RESULTS WORKSPACE</span><h2>One result at a time.<br><i>Every mark matters.</i></h2><p>Pick a student, update their subject marks, and save. Totals, percentage, grade, and pass status recalculate automatically.</p></div><div class="results-intro-mark"><span>Σ</span><small>MARKS → MEANING</small></div></div>
+          <div class="results-workspace"><section class="panel results-form-panel"><div class="panel-heading"><div><h3>Enter marks</h3><p>Marks are out of 100 for each subject.</p></div><span class="panel-index">B / 02</span></div><form id="resultsForm"><label class="form-label" for="resultStudent">Student record</label><select id="resultStudent" class="form-control" required></select><div class="student-mini-card" id="resultStudentPreview"></div><div class="subjects-heading"><span>SUBJECT / MODULE</span><span>MARKS / 100</span></div><div id="marksInputs" class="marks-inputs"></div><div class="form-actions"><button class="button button-outline" type="button" id="resetMarks">Reset changes</button><button class="button button-primary" type="submit">Save result <span>↗</span></button></div><div class="form-message" id="resultMessage" role="status"></div></form></section><section class="panel result-preview-panel"><div class="panel-heading"><div><h3>Result preview</h3><p>Live calculation from current marks</p></div><span class="status-chip"><span></span> AUTO-CALCULATED</span></div><div id="resultPreview" class="result-preview"></div><div class="grade-scale"><div><span>A</span><small>80–100</small></div><div><span>B</span><small>70–79</small></div><div><span>C</span><small>60–69</small></div><div><span>D</span><small>40–59</small></div><div><span>F</span><small>0–39</small></div></div><p class="fine-print">Demo grading rule: A ≥ 80, B ≥ 70, C ≥ 60, D ≥ 40, F &lt; 40. Passing requires at least 40 in every subject.</p></section></div>
+          <div class="page-foot"><span>MERIDIAN REGISTRY <b>•</b> RESULT RULESET 1.0</span><span>MARKS MADE CLEAR <span class="foot-star">✳</span></span></div>
+        </section>
+
+        <section class="view" id="view-analytics" aria-labelledby="analyticsTitle">
+          <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> COHORT / INSIGHTS</div><h1 id="analyticsTitle">Performance <em>decoded.</em></h1><p class="heading-subtitle">Patterns from the register, calculated from student results.</p></div><button class="button button-outline" id="analyticsExport">↧ Download report</button></div>
+          <div id="analyticsMetrics" class="analytics-kpis"></div>
+          <div class="analytics-grid"><section class="panel chart-panel"><div class="panel-heading"><div><h3>Subject performance</h3><p>Average mark by module</p></div><span class="panel-index">C / 03</span></div><div id="subjectChart" class="subject-chart"></div><div class="chart-axis"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div></section><section class="panel distribution-panel"><div class="panel-heading"><div><h3>Grade distribution</h3><p>Where the cohort sits</p></div><span class="panel-index">D / 04</span></div><div id="gradeDistribution" class="grade-distribution"></div><div class="distribution-note"><span class="note-star">✳</span><p><strong>Read the signal.</strong><br>Use this breakdown to spot where students may need support.</p></div></section><section class="panel cohort-panel"><div class="panel-heading"><div><h3>Cohort health</h3><p>Student-level pass status</p></div><button class="text-button" data-view-link="students">Inspect records ↗</button></div><div id="cohortHealth" class="cohort-health"></div></section></div>
+          <div class="page-foot"><span>MERIDIAN REGISTRY <b>•</b> INSIGHTS UPDATE WITH YOUR DATA</span><span>NUMBERS WITH CONTEXT <span class="foot-star">✳</span></span></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="studentModal" aria-hidden="true"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-top"><div><span class="eyebrow">REGISTRY / NEW ENTRY</span><h2 id="modalTitle">Make room for <em>one more.</em></h2><p>Add the student's essentials to the register.</p></div><button class="icon-button modal-close" data-close-modal aria-label="Close dialog">×</button></div><form id="studentForm"><input type="hidden" id="editStudentId"><div class="form-grid"><label class="field"><span>FULL NAME *</span><input class="form-control" id="studentName" name="name" placeholder="e.g. Aanya Sharma" required maxlength="80"></label><label class="field"><span>EMAIL ADDRESS *</span><input class="form-control" id="studentEmail" name="email" type="email" placeholder="student@college.edu" required></label><label class="field"><span>PROGRAMME *</span><select class="form-control" id="studentCourse" name="course" required><option value="">Select programme</option><option>BSc Computer Science</option><option>BCA</option><option>BCom</option><option>BBA</option><option>MCA</option><option>MBA</option><option>BA Economics</option></select></label><label class="field"><span>SEMESTER *</span><select class="form-control" id="studentSemester" name="semester" required><option value="">Select semester</option><option value="1">Semester I</option><option value="2">Semester II</option><option value="3">Semester III</option><option value="4">Semester IV</option><option value="5">Semester V</option><option value="6">Semester VI</option></select></label><label class="field"><span>PHONE (OPTIONAL)</span><input class="form-control" id="studentPhone" name="phone" type="tel" placeholder="+91 00000 00000" maxlength="20"></label><label class="field"><span>ENROLMENT DATE</span><input class="form-control" id="studentDate" name="date" type="date"></label></div><div class="modal-actions"><span class="required-note">* REQUIRED FIELDS</span><button type="button" class="button button-outline" data-close-modal>Cancel</button><button type="submit" class="button button-primary" id="saveStudentButton">Add to registry <span>↗</span></button></div><div class="form-message" id="studentFormMessage" role="status"></div></form></section></div>
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  <div class="help-modal" id="infoModal" aria-hidden="true"><div class="help-card"><button class="icon-button info-close" data-close-info aria-label="Close">×</button><span class="eyebrow">MERIDIAN / FIELD NOTES</span><h2>A small guide to<br><em>the command center.</em></h2><p>This is a front-end student registry prototype built with HTML, CSS, and vanilla JavaScript.</p><div class="help-row"><span>01</span><div><strong>Manage students</strong><small>Add, search, edit, inspect, and remove student records.</small></div></div><div class="help-row"><span>02</span><div><strong>Record results</strong><small>Marks calculate totals, percentages, grades, and pass status automatically.</small></div></div><div class="help-row"><span>03</span><div><strong>Keep your data</strong><small>Records are saved in this browser using localStorage. Export a CSV backup regularly.</small></div></div><div class="help-note">DEMO RULES <span>40% to pass each subject · Marks out of 100</span></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
